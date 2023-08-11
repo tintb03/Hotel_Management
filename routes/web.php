@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\HotelerController;
+use App\Http\Controllers\Admin\RoomController;
 
 
 Route::get('/', function () {
@@ -69,3 +70,11 @@ Route::prefix('admin/hoteler')->group(function () {
 });
 
 
+Route::prefix('admin')->group(function () {
+    Route::get('/room/create', [RoomController::class, 'create'])->name('admin.room.create');
+    Route::post('/room', [RoomController::class, 'store'])->name('admin.room.store');
+    Route::get('/room/{id}/edit', [RoomController::class, 'edit'])->name('admin.room.edit');
+    Route::put('/room/{id}', [RoomController::class, 'update'])->name('admin.room.update');
+    Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('admin.room.destroy');
+    Route::get('/room', [RoomController::class, 'index'])->name('admin.room.index');
+});

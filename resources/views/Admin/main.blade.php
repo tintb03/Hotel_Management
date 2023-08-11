@@ -163,8 +163,8 @@
                         
                     <p class="menu-name">Quản Lý Phòng</p>
                             <ul>
-                                <li><a href="#">View Rooms</a></li>
-                                <li><a href="#">Create Room</a></li>
+                                <li><a href="{{ route('admin.room.index') }}">View Rooms</a></li>
+                                <li><a href="{{ route('admin.room.create') }}">Create Room</a></li>
                             </ul>
                     <ul>
 
