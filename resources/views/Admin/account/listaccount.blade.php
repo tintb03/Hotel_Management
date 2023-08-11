@@ -1,6 +1,7 @@
 
     <div class="container">
         <h2>Account List</h2>
+        <a href="{{ route('admin.account.create') }}" class="btn btn-primary">Create Account</a>
         <table class="table">
             <thead>
                 <tr>

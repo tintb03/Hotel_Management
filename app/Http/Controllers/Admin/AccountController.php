@@ -67,7 +67,7 @@ class AccountController extends Controller
 
 
 
-    ///// sửa tài khoản
+    ///////// sửa tài khoản
         public function editAccount($id)
     {
         $user = User::findOrFail($id);
@@ -94,7 +94,7 @@ class AccountController extends Controller
 
 
 
-    ///// xoá tài khoản
+    ////////// xoá tài khoản
     public function destroyAccount($id)
     {
         $user = User::findOrFail($id);

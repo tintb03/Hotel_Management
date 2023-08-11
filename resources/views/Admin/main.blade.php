@@ -147,8 +147,8 @@
 
                     <p class="menu-name">Quản Lý Chủ Khách Sạn</p>
                             <ul>
-                                <li><a href="#">View Hotelers</a></li>
-                                <li><a href="#">Create Hoteler</a></li>
+                                <li><a href="{{ route('admin.hoteler.index') }}">View Hotelers</a></li>
+                                <li><a href="{{ route('admin.hoteler.create') }}">Create Hoteler</a></li>
                             </ul>
                     <ul>
                         

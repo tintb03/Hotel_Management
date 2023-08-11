@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AccountController;
+use App\Http\Controllers\Admin\HotelerController;
 
 
 Route::get('/', function () {
@@ -54,6 +55,17 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/account/edit/{id}', [AccountController::class, 'editAccount'])->name('admin.account.edit');                                          //sửa tài khoản
     Route::put('/account/update/{id}', [AccountController::class, 'updateAccount'])->name('admin.account.update');                                    //sửa tài khoản
     Route::delete('/account/destroy/{id}', [AccountController::class, 'destroyAccount'])->name('admin.account.destroy');                   //xoá tài khoản
+
+});
+
+// quản lý hoteler
+Route::prefix('admin/hoteler')->group(function () {
+    Route::get('/', [HotelerController::class, 'index'])->name('admin.hoteler.index');                                                            //show all hoteler
+    Route::get('/create', [HotelerController::class, 'create'])->name('admin.hoteler.create');                                           //thêm mới hoteler  
+    Route::post('/store', [HotelerController::class, 'store'])->name('admin.hoteler.store');                                             //thêm mới hoteler  
+    Route::get('/edit/{id}', [HotelerController::class, 'edit'])->name('admin.hoteler.edit');                                                     //sửa thông tin hoteler  
+    Route::put('/update/{id}', [HotelerController::class, 'update'])->name('admin.hoteler.update');                                               //sửa thông tin hoteler    
+    Route::delete('/delete/{id}', [HotelerController::class, 'destroy'])->name('admin.hoteler.destroy');                                 //xoá hoteler
 });
 
 
