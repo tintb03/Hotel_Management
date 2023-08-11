@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Admin\AccountController;
 
 
 Route::get('/', function () {
@@ -40,3 +41,19 @@ Route::middleware(['auth'])->group(function () {
         return view('Admin.main');
     })->name('admin.main');
 });
+
+
+Route::middleware(['auth'])->prefix('admin')->group(function () {
+
+// quản lý tài khoản //
+    Route::get('/account', [AccountController::class, 'show'])->name('admin.account.changemyaccountpassword');                                       //show myaccount
+    Route::post('/account/update-password', [AccountController::class, 'updatePassword'])->name('admin.account.updatePassword');                  //update password
+    Route::get('/account/list', [AccountController::class, 'showAccountList'])->name('admin.account.list');                                       //show listaccount
+    Route::get('/account/create', [AccountController::class, 'createAccount'])->name('admin.account.create');                               //thêm mới tài khoản
+    Route::post('/account/store', [AccountController::class, 'storeAccount'])->name('admin.account.store');                                 //thêm mới tài khoản
+    Route::get('/account/edit/{id}', [AccountController::class, 'editAccount'])->name('admin.account.edit');                                          //sửa tài khoản
+    Route::put('/account/update/{id}', [AccountController::class, 'updateAccount'])->name('admin.account.update');                                    //sửa tài khoản
+    Route::delete('/account/destroy/{id}', [AccountController::class, 'destroyAccount'])->name('admin.account.destroy');                   //xoá tài khoản
+});
+
+
