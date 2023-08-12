@@ -35,8 +35,8 @@ class RoomController extends Controller
             'price' => 'required|numeric',
         ]);
 
-        // Upload image
-        $imagePath = $request->file('image')->store('room_images', 'public');
+            // Tải lên ảnh và lưu ngoài thư mục public
+            $imagePath = $request->file('image')->store('room_images');
 
         // Create room
         Room::create([
