@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hoteler;
 use App\Models\Room;
+use Illuminate\Support\Facades\Storage;
 
 class RoomController extends Controller
 {
@@ -36,7 +37,7 @@ class RoomController extends Controller
         ]);
 
             // Tải lên ảnh và lưu ngoài thư mục public
-            $imagePath = $request->file('image')->store('room_images');
+            $imagePath = $request->file('image')->store('room_images','public');
 
         // Create room
         Room::create([
@@ -60,7 +61,7 @@ class RoomController extends Controller
         $hotelers = Hoteler::all();
         return view('admin.room.edit', compact('room', 'hotelers'));
     }
-
+    
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -73,9 +74,10 @@ class RoomController extends Controller
             'description' => 'required',
             'price' => 'required|numeric',
         ]);
-
+    
         $room = Room::findOrFail($id);
-        $room->update([
+    
+        $data = [
             'hoteler_id' => $request->input('hoteler_id'),
             'room_code' => $request->input('room_code'),
             'room_number' => $request->input('room_number'),
@@ -84,8 +86,17 @@ class RoomController extends Controller
             'detailed_address' => $request->input('detailed_address'),
             'description' => $request->input('description'),
             'price' => $request->input('price'),
-        ]);
-
+        ];
+    
+        if ($request->hasFile('image')) {
+            Storage::delete('public/room_images/' . basename($room->image)); // Xóa ảnh cũ
+            $imagePath = $request->file('image')->store('room_images', 'public'); // Lưu ảnh mới
+            $data['image'] = $imagePath; // Cập nhật đường dẫn ảnh mới
+        }
+    
+    
+        $room->update($data);
+    
         return redirect()->route('admin.room.index')->with('success', 'Room updated successfully.');
     }
 
