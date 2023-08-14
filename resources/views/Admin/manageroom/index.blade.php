@@ -17,6 +17,7 @@
                 <th>Description</th>
                 <th>Image</th>
                 <th>Price</th>
+                <th>Type</th> <!-- Add Type column -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -34,6 +35,14 @@
                         <img src="{{ asset('storage/' . $room->image) }}" alt="Room Image" width="50">
                     </td>
                     <td>{{ $room->price }}</td>
+                    <td>
+    @if ($room->type)
+        {{ $room->type->name_type }}
+    @else
+        No Type
+    @endif
+</td>
+
                     <td>
                         <a href="{{ route('admin.manageroom.edit', $room->id) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('admin.manageroom.destroy', $room->id) }}" method="POST" class="d-inline">

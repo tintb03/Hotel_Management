@@ -36,7 +36,16 @@
             <select class="form-control" id="hotel_id" name="hotel_id" required>
                 <option value="">Select Hotel</option>
                 @foreach ($hotels as $hotel)
-                    <option value="{{ $hotel->id }}">{{ $hotel->hoteler->name_hoteler }}-{{ $hotel->Name_Hotel }} </option>
+                    <option value="{{ $hotel->id }}">{{ $hotel->hoteler->name_hoteler }} - {{ $hotel->Name_Hotel }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="type_id">Select Room Type:</label>
+            <select class="form-control" id="type_id" name="type_id">
+                <option value="">Select Room Type</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}">{{ $type->name_type }}</option>
                 @endforeach
             </select>
         </div>

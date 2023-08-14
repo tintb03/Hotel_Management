@@ -43,6 +43,15 @@
                 @endforeach
             </select>
         </div>
+        <div class="form-group">
+            <label for="type_id">Select Type:</label>
+            <select class="form-control" id="type_id" name="type_id">
+                <option value="">Select Type</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" {{ $room->type_id == $type->id ? 'selected' : '' }}>{{ $type->name_type }}</option>
+                @endforeach
+            </select>
+        </div>
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="{{ route('admin.manageroom.index') }}" class="btn btn-default">Back</a>
     </form>

@@ -6,19 +6,22 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ManageRoom;
 use App\Models\Hotel;
+use App\Models\TypeRoom;
+use Illuminate\Support\Facades\Storage; // Import Storage class for image deletion
 
 class ManageRoomController extends Controller
 {
     public function index()
     {
-        $rooms = ManageRoom::with('hotel')->get();
+        $rooms = ManageRoom::with(['hotel', 'type'])->get(); // Include 'type' relationship
         return view('admin.manageroom.index', compact('rooms'));
     }
 
     public function create()
     {
         $hotels = Hotel::all();
-        return view('admin.manageroom.create', compact('hotels'));
+        $types = TypeRoom::all(); // Lấy danh sách loại phòng từ Model TypeRoom
+        return view('admin.manageroom.create', compact('hotels', 'types'));
     }
 
     public function store(Request $request)
@@ -31,6 +34,7 @@ class ManageRoomController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Add image validation rules
             'price' => 'required|numeric',
             'hotel_id' => 'required|exists:hotels,id',
+            'type_id' => 'nullable|exists:type_rooms,id', // Validation for type_id
         ]);
 
         $imagePath = null;
@@ -47,6 +51,7 @@ class ManageRoomController extends Controller
             'image' => $imagePath,
             'price' => $request->price,
             'hotel_id' => $request->hotel_id,
+            'type_id' => $request->type_id, // Store type_id
         ]);
 
         return redirect()->route('admin.manageroom.index')->with('success', 'Room created successfully.');
@@ -56,7 +61,8 @@ class ManageRoomController extends Controller
     {
         $room = ManageRoom::find($id);
         $hotels = Hotel::all();
-        return view('admin.manageroom.edit', compact('room', 'hotels'));
+        $types = TypeRoom::all(); // Lấy danh sách loại phòng từ Model TypeRoom
+        return view('admin.manageroom.edit', compact('room', 'hotels', 'types'));
     }
 
     public function update(Request $request, $id)
@@ -69,6 +75,7 @@ class ManageRoomController extends Controller
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Add image validation rules
             'price' => 'required|numeric',
             'hotel_id' => 'required|exists:hotels,id',
+            'type_id' => 'nullable|exists:type_rooms,id', // Validation for type_id
         ]);
 
         $room = ManageRoom::find($id);
@@ -85,6 +92,7 @@ class ManageRoomController extends Controller
             'description' => $request->description,
             'price' => $request->price,
             'hotel_id' => $request->hotel_id,
+            'type_id' => $request->type_id, // Update type_id
         ]);
 
         return redirect()->route('admin.manageroom.index')->with('success', 'Room updated successfully.');

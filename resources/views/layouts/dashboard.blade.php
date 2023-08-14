@@ -123,7 +123,7 @@ body {
         </div>
       </li>
 
-      <li id="dash_products">
+      <!-- <li id="dash_products">
         <div id="dash_products_header" class="collapsible-header waves-effect"><b>Quản Lý Phòng</b></div>
         <div id="dash_products_body" class="collapsible-body">
           <ul>
@@ -133,7 +133,7 @@ body {
             </li>
           </ul>
         </div>
-      </li>
+      </li> -->
 
 
 
