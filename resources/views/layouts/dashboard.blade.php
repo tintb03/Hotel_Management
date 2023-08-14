@@ -116,6 +116,8 @@ body {
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.hotel.create') }}">Create Hotel</a>
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.typeroom.index') }}">View Type Rooms</a>
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.typeroom.create') }}">Create Type Room</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.manageroom.index') }}">View Rooms</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.manageroom.create') }}">Create Room</a>
             </li>
           </ul>
         </div>

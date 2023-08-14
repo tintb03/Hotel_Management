@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\HotelerController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\TypeRoomController;
+use App\Http\Controllers\Admin\ManageRoomController;
 
 
 Route::get('/', function () {
@@ -98,4 +99,15 @@ Route::prefix('typeroom')->group(function () {
     Route::get('/edit/{id}', [TypeRoomController::class, 'edit'])->name('admin.typeroom.edit');
     Route::put('/update/{id}', [TypeRoomController::class, 'update'])->name('admin.typeroom.update');
     Route::delete('/delete/{id}', [TypeRoomController::class, 'destroy'])->name('admin.typeroom.destroy');
+});
+
+
+Route::prefix('room')->group(function () {
+    // Các route quản lý phòng
+    Route::get('/', [ManageRoomController::class, 'index'])->name('admin.manageroom.index');
+    Route::get('/create', [ManageRoomController::class, 'create'])->name('admin.manageroom.create');
+    Route::post('/store', [ManageRoomController::class, 'store'])->name('admin.manageroom.store');
+    Route::get('/edit/{id}', [ManageRoomController::class, 'edit'])->name('admin.manageroom.edit');
+    Route::put('/update/{id}', [ManageRoomController::class, 'update'])->name('admin.manageroom.update');
+    Route::delete('/delete/{id}', [ManageRoomController::class, 'destroy'])->name('admin.manageroom.destroy');
 });
