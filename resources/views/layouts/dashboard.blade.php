@@ -114,6 +114,8 @@ body {
             <li id="products_product">
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.hotel.index') }}">View Hotels</a>
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.hotel.create') }}">Create Hotel</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.typeroom.index') }}">View Type Rooms</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.typeroom.create') }}">Create Type Room</a>
             </li>
           </ul>
         </div>

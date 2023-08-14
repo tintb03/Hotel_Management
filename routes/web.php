@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\HotelerController;
 use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\RoomController;
+use App\Http\Controllers\Admin\TypeRoomController;
 
 
 Route::get('/', function () {
@@ -88,4 +89,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/edit/{id}', [HotelController::class, 'edit'])->name('admin.hotel.edit');
     Route::put('/update/{id}', [HotelController::class, 'update'])->name('admin.hotel.update');
     Route::delete('/delete/{id}', [HotelController::class, 'destroy'])->name('admin.hotel.destroy');
+});
+
+Route::prefix('typeroom')->group(function () {
+    Route::get('/', [TypeRoomController::class, 'index'])->name('admin.typeroom.index');
+    Route::get('/create', [TypeRoomController::class, 'create'])->name('admin.typeroom.create');
+    Route::post('/store', [TypeRoomController::class, 'store'])->name('admin.typeroom.store');
+    Route::get('/edit/{id}', [TypeRoomController::class, 'edit'])->name('admin.typeroom.edit');
+    Route::put('/update/{id}', [TypeRoomController::class, 'update'])->name('admin.typeroom.update');
+    Route::delete('/delete/{id}', [TypeRoomController::class, 'destroy'])->name('admin.typeroom.destroy');
 });
