@@ -15,6 +15,14 @@
       height: 100vh;
     }
 
+    /* Tùy chỉnh background cho trang */
+    body {
+      background-image: url('https://wallpaperaccess.com/full/2314950.jpg');
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
     /* Tùy chỉnh màu chữ trong form */
     label {
       color: #333;
@@ -46,76 +54,31 @@
       background-color: #1e7e34;
       border-color: #1e7e34;
     }
-
-    /* Đặt nút đăng nhập và đăng ký sang phải */
-    .login-register {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      gap: 10px;
-      
-    }
-
-    /* Đặt logo sang trái */
-    .logo {
-      margin-right: auto;
-    }
-
-    /* Kiểu chữ hoa mỹ cho chữ Booking */
-    .booking-text {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      font-size: 24px;
-      margin-right: 10px;
-    }
-
-    /* Dropdown styles */
-    .dropdown-menu {
-      min-width: auto;
-      transform: translate(0, 0);
-    }
-
-    .dropdown-menu a {
-      display: block;
-      padding: 8px 12px;
-    }
   </style>
 </head>
 <body>
-<div class="login-register">
-  <div class="logo">
-    <a href="/" class="booking-text">Booking</a>
-  </div>
-  <!-- Hiển thị tên người dùng và liên kết đăng xuất khi đã đăng nhập -->
-  @if(Auth::check())
-    <div class="dropdown">
-      <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="
-    padding-right: 34px;
-">
-        {{ Auth::user()->name }}
-      </a>
-      <div class="dropdown-menu" aria-labelledby="userDropdown">
-        <a class="dropdown-item" href="{{ route('logout') }}">Đăng Xuất</a>
-      </div>
-    </div>
-  @else
-    <!-- Liên kết để mở modal đăng nhập -->
-    <a href="#" data-toggle="modal" data-target="#loginModal">Đăng Nhập</a>
-    <!-- Liên kết để mở modal đăng ký -->
-    <a href="#" data-toggle="modal" data-target="#registerModal">Đăng Ký</a>
-  @endif
-</div>
+<!-- Button để mở modal đăng nhập -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#loginModal">
+  Open Login Modal
+</button>
+
+<!-- Button để mở modal đăng ký -->
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#registerModal">
+  Open Register Modal
+</button>
 
 <!-- Modal đăng nhập -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Đăng Nhập</h5>
+        <h5 class="modal-title" id="loginModalLabel">Login</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <!-- Đặt nội dung form đăng nhập ở đây -->
         <form method="POST" action="{{ route('login') }}">
           @csrf
           <div class="form-group">
@@ -123,18 +86,18 @@
             <input type="email" class="form-control" id="loginEmail" name="email" required>
           </div>
           <div class="form-group">
-            <label for="loginPassword">Mật Khẩu</label>
+            <label for="loginPassword">Password</label>
             <input type="password" class="form-control" id="loginPassword" name="password" required>
           </div>
           <div class="form-group">
-            <label for="loginRole">Vai Trò</label>
+            <label for="loginRole">Role</label>
             <select class="form-control" id="loginRole" name="role" required>
               <option value="admin">Admin</option>
               <option value="hoteler">Hoteler</option>
               <option value="user">User</option>
             </select>
           </div>
-          <button type="submit" class="btn btn-primary">Đăng Nhập</button>
+          <button type="submit" class="btn btn-primary">Login</button>
         </form>
       </div>
     </div>
@@ -146,16 +109,17 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="registerModalLabel">Đăng Ký</h5>
+        <h5 class="modal-title" id="registerModalLabel">Register</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
+        <!-- Đặt nội dung form đăng ký ở đây -->
         <form method="POST" action="{{ route('register') }}">
           @csrf
           <div class="form-group">
-            <label for="regDisplayName">Tên Hiển Thị</label>
+            <label for="regDisplayName">Display Name</label>
             <input type="text" class="form-control" id="regDisplayName" name="display_name" required>
           </div>
           <div class="form-group">
@@ -163,14 +127,14 @@
             <input type="email" class="form-control" id="regEmail" name="email" required>
           </div>
           <div class="form-group">
-            <label for="regPassword">Mật Khẩu</label>
+            <label for="regPassword">Password</label>
             <input type="password" class="form-control" id="regPassword" name="password" required>
           </div>
           <div class="form-group">
-            <label for="regConfirmPassword">Xác Nhận Mật Khẩu</label>
+            <label for="regConfirmPassword">Confirm Password</label>
             <input type="password" class="form-control" id="regConfirmPassword" name="password_confirmation" required>
           </div>
-          <button type="submit" class="btn btn-success">Đăng Ký</button>
+          <button type="submit" class="btn btn-success">Register</button>
         </form>
       </div>
     </div>
