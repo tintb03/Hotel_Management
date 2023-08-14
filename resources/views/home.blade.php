@@ -53,6 +53,7 @@
       justify-content: flex-end;
       align-items: center;
       gap: 10px;
+      
     }
 
     /* Đặt logo sang trái */
@@ -66,6 +67,17 @@
       font-size: 24px;
       margin-right: 10px;
     }
+
+    /* Dropdown styles */
+    .dropdown-menu {
+      min-width: auto;
+      transform: translate(0, 0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 12px;
+    }
   </style>
 </head>
 <body>
@@ -75,8 +87,16 @@
   </div>
   <!-- Hiển thị tên người dùng và liên kết đăng xuất khi đã đăng nhập -->
   @if(Auth::check())
-    <span>{{ Auth::user()->name }}</span>
-    <a href="{{ route('logout') }}">Đăng Xuất</a>
+    <div class="dropdown">
+      <a class="dropdown-toggle" href="#" role="button" id="userDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="
+    padding-right: 34px;
+">
+        {{ Auth::user()->name }}
+      </a>
+      <div class="dropdown-menu" aria-labelledby="userDropdown">
+        <a class="dropdown-item" href="{{ route('logout') }}">Đăng Xuất</a>
+      </div>
+    </div>
   @else
     <!-- Liên kết để mở modal đăng nhập -->
     <a href="#" data-toggle="modal" data-target="#loginModal">Đăng Nhập</a>
@@ -156,7 +176,6 @@
     </div>
   </div>
 </div>
-
 
 <!-- Thêm JavaScript của Bootstrap -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
