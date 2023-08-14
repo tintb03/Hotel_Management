@@ -42,6 +42,7 @@
         <div class="form-group">
             <label for="image">Image:</label>
             <input type="file" class="form-control-file" id="image" name="image">
+            <img id="image-preview" src="#" alt="Room Image" width="200" style="display: none;">
         </div>
         <div class="form-group">
             <label for="price">Price:</label>
@@ -52,5 +53,26 @@
     </form>
 </div>
 
+<script>
+    // Lắng nghe sự kiện khi người dùng chọn ảnh
+    document.getElementById('image').addEventListener('change', function(e) {
+        // Lấy đối tượng hình ảnh
+        var image = document.getElementById('image-preview');
+        
+        // Kiểm tra nếu có tệp được chọn
+        if (e.target.files && e.target.files[0]) {
+            // Cập nhật thuộc tính src của hình ảnh để hiển thị ảnh đã chọn
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                image.src = e.target.result;
+                image.style.display = 'block'; // Hiển thị hình ảnh
+            };
+            reader.readAsDataURL(e.target.files[0]);
+        } else {
+            // Ẩn hình ảnh nếu không có tệp được chọn
+            image.style.display = 'none';
+        }
+    });
+</script>
 
 @endsection
