@@ -108,12 +108,24 @@ body {
       </li>
 
       <li id="dash_products">
+        <div id="dash_products_header" class="collapsible-header waves-effect"><b>Quản Lý Khách Sạn</b></div>
+        <div id="dash_products_body" class="collapsible-body">
+          <ul>
+            <li id="products_product">
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.hotel.index') }}">View Hotels</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.hotel.create') }}">Create Hotel</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+      <li id="dash_products">
         <div id="dash_products_header" class="collapsible-header waves-effect"><b>Quản Lý Phòng</b></div>
         <div id="dash_products_body" class="collapsible-body">
           <ul>
             <li id="products_product">
               <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.room.index') }}">View Rooms</a>
-              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.room.create') }}">Create Rooms</a>
+              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.room.create') }}">Create Room</a>
             </li>
           </ul>
         </div>

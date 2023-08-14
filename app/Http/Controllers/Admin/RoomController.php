@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Hoteler;
+use App\Models\Hotel;
 use App\Models\Room;
 use Illuminate\Support\Facades\Storage;
 

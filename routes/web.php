@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\AccountController;
 use App\Http\Controllers\Admin\HotelerController;
+use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\RoomController;
 
 
@@ -77,4 +78,14 @@ Route::prefix('admin')->group(function () {
     Route::put('/room/{id}', [RoomController::class, 'update'])->name('admin.room.update');
     Route::delete('/room/{id}', [RoomController::class, 'destroy'])->name('admin.room.destroy');
     Route::get('/room', [RoomController::class, 'index'])->name('admin.room.index');
+});
+
+ // Quản lý khách sạn
+ Route::prefix('admin/hotel')->group(function () {
+    Route::get('/', [HotelController::class, 'index'])->name('admin.hotel.index');
+    Route::get('/create', [HotelController::class, 'create'])->name('admin.hotel.create');
+    Route::post('/store', [HotelController::class, 'store'])->name('admin.hotel.store');
+    Route::get('/edit/{id}', [HotelController::class, 'edit'])->name('admin.hotel.edit');
+    Route::put('/update/{id}', [HotelController::class, 'update'])->name('admin.hotel.update');
+    Route::delete('/delete/{id}', [HotelController::class, 'destroy'])->name('admin.hotel.destroy');
 });
