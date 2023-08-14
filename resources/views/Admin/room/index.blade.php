@@ -9,6 +9,7 @@
         <thead>
             <tr>
                 <th>ID</th>
+                <th>Hoteler Name</th>
                 <th>Hotel Name</th>
                 <th>Room Code</th>
                 <th>Room Number</th>
@@ -25,6 +26,7 @@
             @foreach ($rooms as $room)
             <tr>
                 <td>{{ $room->id }}</td>
+                <td>{{ $room->hoteler ? $room->hoteler->name_hoteler : 'N/A' }}</td>
                 <td>{{ $room->hoteler ? $room->hoteler->name_hotel : 'N/A' }}</td>
 
                 <td>{{ $room->room_code }}</td>
