@@ -136,7 +136,7 @@ body {
       </li> -->
 
 
-
+<!-- 
       <li id="dash_brands">
         <div id="dash_brands_header" class="collapsible-header waves-effect"><b>Brands</b></div>
         <div id="dash_brands_body" class="collapsible-body">
@@ -150,7 +150,9 @@ body {
             </li>
           </ul>
         </div>
-      </li>
+      </li> -->
+
+      
     </ul>
   </ul>
 
