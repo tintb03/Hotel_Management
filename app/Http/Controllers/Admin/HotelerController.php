@@ -28,7 +28,6 @@ class HotelerController extends Controller
     {
         $this->validate($request, [
             'name_hoteler' => 'required|string|max:255',
-            'name_hotel' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:hotelers',
             'phone_number' => 'required|string|max:20',
@@ -36,7 +35,6 @@ class HotelerController extends Controller
 
         Hoteler::create([
             'name_hoteler' => $request->name_hoteler,
-            'name_hotel' => $request->name_hotel,
             'address' => $request->address,
             'email' => $request->email,
             'phone_number' => $request->phone_number,
@@ -58,7 +56,6 @@ class HotelerController extends Controller
     {
         $this->validate($request, [
             'name_hoteler' => 'required|string|max:255',
-            'name_hotel' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:hotelers,email,' . $id,
             'phone_number' => 'required|string|max:20',
@@ -67,7 +64,6 @@ class HotelerController extends Controller
         $hoteler = Hoteler::find($id);
         $hoteler->update([
             'name_hoteler' => $request->name_hoteler,
-            'name_hotel' => $request->name_hotel,
             'address' => $request->address,
             'email' => $request->email,
             'phone_number' => $request->phone_number,

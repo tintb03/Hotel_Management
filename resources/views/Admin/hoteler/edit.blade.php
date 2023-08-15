@@ -12,10 +12,6 @@
                 <input type="text" class="form-control" id="name_hoteler" name="name_hoteler" value="{{ $hoteler->name_hoteler }}" required>
             </div>
             <div class="form-group">
-                <label for="name_hotel">Name Hotel:</label>
-                <input type="text" class="form-control" id="name_hotel" name="name_hotel" value="{{ $hoteler->name_hotel }}" required>
-            </div>
-            <div class="form-group">
                 <label for="address">Address:</label>
                 <input type="text" class="form-control" id="address" name="address" value="{{ $hoteler->address }}" required>
             </div>

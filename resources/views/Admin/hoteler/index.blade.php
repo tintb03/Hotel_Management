@@ -9,7 +9,6 @@
             <thead>
                 <tr>
                     <th>Name Hoteler</th>
-                    <th>Name Hotel</th>
                     <th>Address</th>
                     <th>Email</th>
                     <th>Phone Number</th>
@@ -20,7 +19,6 @@
                 @foreach ($hotelers as $hoteler)
                     <tr>
                         <td>{{ $hoteler->name_hoteler }}</td>
-                        <td>{{ $hoteler->name_hotel }}</td>
                         <td>{{ $hoteler->address }}</td>
                         <td>{{ $hoteler->email }}</td>
                         <td>{{ $hoteler->phone_number }}</td>
