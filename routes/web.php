@@ -9,11 +9,11 @@ use App\Http\Controllers\Admin\HotelController;
 use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\TypeRoomController;
 use App\Http\Controllers\Admin\ManageRoomController;
+use App\Http\Controllers\HomepageController;
 
 
-Route::get('/', function () {
-    return view('home');
-});
+
+Route::get('/', [HomepageController::class, 'index'])->name('home');
 
 // Đăng nhập
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
