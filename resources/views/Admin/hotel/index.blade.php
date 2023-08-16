@@ -4,6 +4,9 @@
 
 <div class="container">
     <h2>Hotels</h2>
+    <div class="form-group">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+    </div>
     <a href="{{ route('admin.hotel.create') }}" class="btn btn-primary">Add New Hotel</a>
     <table class="table mt-3">
         <thead>
@@ -19,7 +22,7 @@
         </thead>
         <tbody>
             @foreach ($hotels as $hotel)
-            <tr>
+            <tr class="searchable">
                 <td>{{ $hotel->id }}</td>
                 <td>{{ $hotel->hoteler ? $hotel->hoteler->name_hoteler : 'N/A' }}</td>
                 <td>{{ $hotel->Name_Hotel }}</td>
@@ -40,5 +43,17 @@
     </table>
     <a href="{{ route('admin.main') }}" class="btn btn-default">Back</a>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".searchable").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 
 @endsection

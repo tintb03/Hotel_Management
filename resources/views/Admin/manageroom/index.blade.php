@@ -4,6 +4,9 @@
 
 <div class="container">
     <h2>Manage Rooms</h2>
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+    </div>
     <a href="{{ route('admin.manageroom.create') }}" class="btn btn-primary">Create New Room</a>
     <table class="table mt-3">
         <thead>
@@ -23,7 +26,7 @@
         </thead>
         <tbody>
             @foreach ($rooms as $room)
-                <tr>
+                <tr class="searchable">
                     <td>{{ $room->id }}</td>
                     <td>{{ $room->hotel->hoteler->name_hoteler }}</td>
                     <td>{{ $room->hotel->Name_Hotel }}</td>
@@ -36,13 +39,12 @@
                     </td>
                     <td>{{ $room->price }}</td>
                     <td>
-    @if ($room->type)
-        {{ $room->type->name_type }}
-    @else
-        No Type
-    @endif
-</td>
-
+                        @if ($room->type)
+                            {{ $room->type->name_type }}
+                        @else
+                            No Type
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('admin.manageroom.edit', $room->id) }}" class="btn btn-primary">Edit</a>
                         <form action="{{ route('admin.manageroom.destroy', $room->id) }}" method="POST" class="d-inline">
@@ -56,5 +58,17 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".searchable").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
 
 @endsection

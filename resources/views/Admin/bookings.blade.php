@@ -2,6 +2,12 @@
 
 @section('content')
     <h1>Quản lý Đặt phòng</h1>
+
+    <!-- Search input field -->
+    <div class="mb-3">
+        <input type="text" id="booking-search" class="form-control" placeholder="Tìm kiếm...">
+    </div>
+
     <table class="table">
         <thead>
             <tr>
@@ -39,4 +45,23 @@
             @endforeach
         </tbody>
     </table>
+
+    <script>
+        // JavaScript for search functionality
+        const searchInput = document.getElementById('booking-search');
+        const rows = document.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            rows.forEach(row => {
+                const bookingData = row.textContent.toLowerCase();
+                if (bookingData.includes(searchTerm)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    </script>
 @endsection

@@ -48,6 +48,11 @@
     </header>
     <!-- Home cards 1 -->
     <h1 style="text-align: center; color:gray">Hotel List</h1>
+
+    <div class="mb-3">
+            <input type="text" id="room-search" class="form-control" placeholder="Tìm kiếm...">
+        </div>
+
     <section class="home-cards">
       @foreach ($rooms as $room)
       <div class="card">
@@ -55,7 +60,7 @@
         <h3 style="color:cornflowerblue"> {{ $room->hotel->Name_Hotel }}</h3>
         <p>
           Type Room : {{ $room->type->name_type }}<br> Room Code : {{ $room->room_code }}<br> Price:
-          {{ $room->price }}
+          {{ $room->price }}<br> Address : {{ $room->hotel->detailed_address }}
         </p>
         <button class="book-now-btn" data-toggle="modal" data-target="#bookingModal">Book Now <i
             class="fas fa-chevron-right"></i></button>
@@ -64,7 +69,7 @@
           Room <i class="fas fa-chevron-right"></i></a>
       </div>
 
-      <!-- Modal -->
+      <!-- Modal Detail-->
       <div class="modal fade" id="roomModal{{ $room->id }}" tabindex="-1" aria-labelledby="roomModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
@@ -82,7 +87,7 @@
               <p>
                 Type Room : {{ $room->type->name_type }}<br> Room Code : {{ $room->room_code }}<br> Room Number :
                 {{ $room->room_number }}<br> Floor: {{ $room->floor }}<br> Description: {{ $room->description }}<br>
-                Price: {{ $room->price }}<br>
+                Price: {{ $room->price }}<br> Address : {{ $room->hotel->detailed_address }}<br>
                 <a href="{{ route('booking.create', ['room' => $room->id]) }}" class="book-now-btn">Book Now <i class="fas fa-chevron-right"></i></a>
               </p>
               <!-- Additional room details can be added here -->
@@ -268,6 +273,25 @@
           $('#bookingModal').modal('show');
         });
       });
+
+
+          // JavaScript for search functionality
+    const searchInput = document.getElementById('room-search');
+    const cards = document.querySelectorAll('.home-cards .card');
+
+    searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        cards.forEach(card => {
+            const cardData = card.textContent.toLowerCase();
+            if (cardData.includes(searchTerm)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
     </script>
   </body>
 </html>

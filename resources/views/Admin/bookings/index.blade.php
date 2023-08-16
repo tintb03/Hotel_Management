@@ -2,6 +2,11 @@
 
 @section('content')
     <h1>Quản lý Đặt phòng</h1>
+    <!-- Search form -->
+    <div class="form-group">
+        <input type="text" id="searchInput" class="form-control" placeholder="Tìm kiếm...">
+    </div>
+    
     <table class="table">
         <thead>
             <tr>
@@ -17,7 +22,7 @@
         </thead>
         <tbody>
             @foreach ($bookings as $booking)
-                <tr>
+                <tr class="searchable">
                     <td>{{ $booking->id }}</td>
                     <td>{{ $booking->orderer }}</td>
                     <td>{{ $booking->phone_number }}</td>
@@ -37,4 +42,16 @@
             @endforeach
         </tbody>
     </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $(".searchable").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
 @endsection

@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <h2>Type Room List</h2>
+    <div class="mb-3">
+        <input type="text" id="searchInput" class="form-control" placeholder="Search...">
+    </div>
     <a href="{{ route('admin.typeroom.create') }}" class="btn btn-primary">Create Type Room</a>
     <table class="table">
         <thead>
@@ -15,7 +18,7 @@
         </thead>
         <tbody>
             @foreach($typerooms as $typeroom)
-            <tr>
+            <tr class="searchable">
                 <td>{{ $typeroom->id }}</td>
                 <td>{{ $typeroom->name_type }}</td>
                 <td>{{ $typeroom->hotel->Name_Hotel }} - {{ $typeroom->hotel->hoteler->name_hoteler }}</td>
@@ -32,4 +35,17 @@
         </tbody>
     </table>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#searchInput").on("keyup", function () {
+            var value = $(this).val().toLowerCase();
+            $(".searchable").filter(function () {
+                $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+            });
+        });
+    });
+</script>
+
 @endsection
