@@ -88,71 +88,17 @@
       <div>
         @foreach ($rooms as $room)
         <img src="{{ asset('storage/' . $room->image) }}" alt="Room Image" width="200">
-        <h3>Mã Phòng: {{ $room->room_code }}</h3>
+        <h3>Room Number: {{ $room->room_number }}</h3>
         <p>
             Floor: {{ $room->floor }}<br>
             Hotel: {{ $room->hotel->Name_Hotel }}<br>
+            Type Room: {{ $room->hotel->type_rooms }}<br>
             Price: {{ $room->price }}
         </p>
-        <a href="{{ route('admin.manageroom.edit', $room->id) }}">Edit Room <i class="fas fa-chevron-right"></i></a>
+        <a href="{{ route('admin.manageroom.edit', $room->id) }}">Book Now <i class="fas fa-chevron-right"></i></a>
         @endforeach
       </div>
-      
-    </section>
-
-    <!-- Home cards 2 -->
-            <section class="home-cards">
-                <div>
-                    <img src="https://i.ibb.co/zVqhWn2/card5.png" alt="" />
-                    <h3>Microsoft Teams</h3>
-                    <p>
-                        Unleash the power of your team.
-                    </p>
-                    <a href="#">Shop Now <i class="fas fa-chevron-right"></i></a>
-                </div>
-                <div>
-                    <img src="https://i.ibb.co/mGZcxcn/card6.jpg" alt="" />
-                    <h3>Unlock the power of learning</h3>
-                    <p>
-                        Get students future-ready with Windows 10 devices. Starting at $219.
-                    </p>
-                    <a href="#">Shop Now <i class="fas fa-chevron-right"></i></a>
-                </div>
-                <div>
-                    <img src="https://i.ibb.co/NpPvVHj/card7.png" alt="" />
-                    <h3>Windows 10 Enterprise</h3>
-                    <p>
-                        Download the free 90-day evaluation for IT professionals.
-                    </p>
-                    <a href="#">Download Now <i class="fas fa-chevron-right"></i></a>
-                </div>
-                <div>
-                    <img src="https://i.ibb.co/LkP4L5T/card8.png" alt="" />
-                    <h3>Explore Kubernetes</h3>
-                    <p>
-                        Learn how Kubernetes works and get started with cloud native app
-                        development today.
-                    </p>
-                    <a href="#">Get Started <i class="fas fa-chevron-right"></i></a>
-                </div>
-      </section>
-      
-      <!-- Follow -->
-      <section class="follow">
-        <p>Follow Booking.Com</p>
-        <a href="https://www.facebook.com/phamductin22/">
-          <img src="https://i.ibb.co/LrVMXNR/social-fb.png" alt="Facebook">
-        </a>
-        <a href="https://www.facebook.com/phamductin22/">
-          <img src="https://i.ibb.co/vJvbLwm/social-twitter.png" alt="Twitter">
-        </a>
-        <a href="https://www.facebook.com/phamductin22/">
-          <img src="https://i.ibb.co/b30HMhR/social-linkedin.png" alt="Linkedin">
-        </a>
-      </section>
     </div>
-
-
       <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
@@ -170,10 +116,6 @@
         </div>
     </footer>
 
-
-
-
-    
 <!-- Modal đăng nhập -->
 <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
