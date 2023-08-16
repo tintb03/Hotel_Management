@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\TypeRoomController;
 use App\Http\Controllers\Admin\ManageRoomController;
 use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\BookingController;
 
 
 
@@ -111,3 +112,8 @@ Route::prefix('room')->group(function () {
     Route::put('/update/{id}', [ManageRoomController::class, 'update'])->name('admin.manageroom.update');
     Route::delete('/delete/{id}', [ManageRoomController::class, 'destroy'])->name('admin.manageroom.destroy');
 });
+
+Route::get('/booking/create/{room}', [BookingController::class, 'create'])->name('booking.create');
+Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
+
+Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');

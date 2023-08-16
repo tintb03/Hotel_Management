@@ -17,6 +17,11 @@ class ManageRoomController extends Controller
         return view('admin.manageroom.index', compact('rooms'));
     }
 
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'room_id');
+    }
+
     public function create()
     {
         $hotels = Hotel::all();

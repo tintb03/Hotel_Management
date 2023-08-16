@@ -123,17 +123,17 @@ body {
         </div>
       </li>
 
-      <!-- <li id="dash_products">
-        <div id="dash_products_header" class="collapsible-header waves-effect"><b>Quản Lý Phòng</b></div>
+      <li id="dash_products">
+        <div id="dash_products_header" class="collapsible-header waves-effect"><b>Quản Lý Bookings</b></div>
         <div id="dash_products_body" class="collapsible-body">
           <ul>
             <li id="products_product">
-              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.room.index') }}">View Rooms</a>
-              <a class="waves-effect" style="text-decoration: none;" href="{{ route('admin.room.create') }}">Create Room</a>
+              <a class="waves-effect" style="text-decoration: none;"  href="{{ route('admin.bookings.index') }}">View Bookings</a>
+              <a class="waves-effect" style="text-decoration: none;" href="#"></a>
             </li>
           </ul>
         </div>
-      </li> -->
+      </li>
 
 
 <!-- 

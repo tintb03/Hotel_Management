@@ -95,7 +95,7 @@
                 Room Code : {{ $room->room_code }}<br>
                 Price: {{ $room->price }}
         </p>
-        <a href="{{ route('admin.manageroom.edit', $room->id) }}">Book Now <i class="fas fa-chevron-right"></i></a>
+        <a href="{{ route('booking.create', ['room' => $room->id]) }}" class="book-now-btn">Book Now <i class="fas fa-chevron-right"></i></a>
         <a href="#" class="show-room-details" data-toggle="modal" data-target="#roomModal{{ $room->id }}">Detail Room <i class="fas fa-chevron-right"></i></a>
       </div>
 
@@ -230,6 +230,15 @@
     });
   });
 </script>
+
+<script>
+    // Lấy thông báo từ session và hiển thị nếu có
+    let successMessage = '{{ session('success') }}';
+    if (successMessage !== '') {
+        alert(successMessage);
+    }
+</script>
+
 
   
 <!-- Thêm JavaScript của Bootstrap -->
