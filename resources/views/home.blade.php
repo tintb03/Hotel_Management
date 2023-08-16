@@ -82,7 +82,8 @@
               <p>
                 Type Room : {{ $room->type->name_type }}<br> Room Code : {{ $room->room_code }}<br> Room Number :
                 {{ $room->room_number }}<br> Floor: {{ $room->floor }}<br> Description: {{ $room->description }}<br>
-                Price: {{ $room->price }}
+                Price: {{ $room->price }}<br>
+                <a href="{{ route('booking.create', ['room' => $room->id]) }}" class="book-now-btn">Book Now <i class="fas fa-chevron-right"></i></a>
               </p>
               <!-- Additional room details can be added here -->
             </div>
