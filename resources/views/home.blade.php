@@ -84,21 +84,52 @@
     </header>
 
     <!-- Home cards 1 -->
+    <h1>Hotel List</h1>
     <section class="home-cards">
-      <div>
-        @foreach ($rooms as $room)
+      @foreach ($rooms as $room)
+      <div class="card">
         <img src="{{ asset('storage/' . $room->image) }}" alt="Room Image" width="200">
-        <h3>Room Number: {{ $room->room_number }}</h3>
+        <h3>Hotel Name : {{ $room->hotel->Name_Hotel }}</h3>
         <p>
-            Floor: {{ $room->floor }}<br>
-            Hotel: {{ $room->hotel->Name_Hotel }}<br>
-            Type Room: {{ $room->hotel->type_rooms }}<br>
-            Price: {{ $room->price }}
+                Type Room : {{ $room->type->name_type }}<br>
+                Room Code : {{ $room->room_code }}<br>
+                Price: {{ $room->price }}
         </p>
         <a href="{{ route('admin.manageroom.edit', $room->id) }}">Book Now <i class="fas fa-chevron-right"></i></a>
-        @endforeach
+        <a href="#" class="show-room-details" data-toggle="modal" data-target="#roomModal{{ $room->id }}">Detail Room <i class="fas fa-chevron-right"></i></a>
       </div>
-    </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="roomModal{{ $room->id }}" tabindex="-1" aria-labelledby="roomModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="roomModalLabel">Room Details</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <!-- Room details content here -->
+              <img src="{{ asset('storage/' . $room->image) }}" alt="Room Image" width="200">
+              <h3>Hotel Name : {{ $room->hotel->Name_Hotel }}</h3>
+              <p>
+                Type Room : {{ $room->type->name_type }}<br>
+                Room Code : {{ $room->room_code }}<br>
+                Room Number : {{ $room->room_number }}<br>
+                Floor: {{ $room->floor }}<br>
+                Description: {{ $room->description }}<br>
+                Price: {{ $room->price }}
+              </p>
+              <!-- Additional room details can be added here -->
+            </div>
+          </div>
+        </div>
+      </div>
+      @endforeach
+    </section>
+
+
       <!-- Footer -->
     <footer class="footer">
         <div class="footer-inner">
@@ -190,6 +221,15 @@
 
 
 
+<script>
+  $(document).ready(function() {
+    // Show modal when "Detail Room" link is clicked
+    $('.show-room-details').click(function() {
+      var targetModalId = $(this).data('target');
+      $(targetModalId).modal('show');
+    });
+  });
+</script>
 
   
 <!-- Thêm JavaScript của Bootstrap -->
