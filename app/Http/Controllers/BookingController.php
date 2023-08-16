@@ -9,14 +9,11 @@ use App\Http\Controllers\Controller;
 
 class BookingController extends Controller
 {
-
-
-        public function index()
+    public function index()
     {
         $bookings = Booking::with('room')->get();
         return view('admin.bookings', compact('bookings'));
     }
-
 
     public function create(ManageRoom $room)
     {
@@ -30,6 +27,7 @@ class BookingController extends Controller
             'phone_number' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'room_id' => 'required|exists:manage_rooms,id',
+            'message' => 'nullable|string', // Validation rule for message field
         ]);
 
         Booking::create($validatedData);
@@ -50,6 +48,7 @@ class BookingController extends Controller
             'phone_number' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'room_id' => 'required|exists:manage_rooms,id',
+            'message' => 'nullable|string', // Validation rule for message field
         ]);
 
         $booking = Booking::findOrFail($id);

@@ -18,6 +18,7 @@
                 <th>Mã Phòng</th>
                 <th>Tên Khách sạn</th>
                 <th>Ảnh phòng</th>
+                <th>Message</th>
                 <th>Ngày đặt</th>
                 <th>Thao tác</th>
             </tr>
@@ -32,6 +33,7 @@
                     <td>{{ $booking->room->room_code }}</td>
                     <td>{{ $booking->room->hotel->Name_Hotel }}</td>
                     <td><img src="{{ asset('storage/' . $booking->room->image) }}" alt="Room Image" width="100"></td>
+                    <td>{{ $booking->message }}</td>
                     <td>{{ $booking->created_at }}</td>
                     <td>
                         <a href="{{ route('admin.bookings.edit', ['booking' => $booking->id]) }}" class="btn btn-primary">Sửa</a>

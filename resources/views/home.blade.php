@@ -240,6 +240,17 @@
               </div>
 
               <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" class="form-control @error('message') is-invalid @enderror"
+                            name="message" rows="4">{{ old('message') }}</textarea>
+                        @error('message')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+              </div>
+
+              <div class="form-group">
                 <button type="submit" class="btn btn-primary">Đặt Phòng</button>
               </div>
             </form>

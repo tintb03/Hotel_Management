@@ -15,6 +15,7 @@ class Booking extends Model
         'phone_number',
         'email',
         'room_id',
+        'message',
     ];
 
     public function room()
