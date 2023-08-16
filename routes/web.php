@@ -117,3 +117,11 @@ Route::get('/booking/create/{room}', [BookingController::class, 'create'])->name
 Route::post('/booking/store', [BookingController::class, 'store'])->name('booking.store');
 
 Route::get('/admin/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
+
+Route::prefix('admin')->group(function () {
+    // Các route quản lý đặt phòng
+    Route::get('/bookings', [BookingController::class, 'index'])->name('admin.bookings.index');
+    Route::get('/bookings/{booking}/edit', [BookingController::class, 'edit'])->name('admin.bookings.edit');
+    Route::put('/bookings/{booking}', [BookingController::class, 'update'])->name('admin.bookings.update');
+    Route::delete('/bookings/{booking}', [BookingController::class, 'destroy'])->name('admin.bookings.destroy');
+});

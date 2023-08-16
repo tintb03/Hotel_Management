@@ -129,7 +129,6 @@ body {
           <ul>
             <li id="products_product">
               <a class="waves-effect" style="text-decoration: none;"  href="{{ route('admin.bookings.index') }}">View Bookings</a>
-              <a class="waves-effect" style="text-decoration: none;" href="#"></a>
             </li>
           </ul>
         </div>

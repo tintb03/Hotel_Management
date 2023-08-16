@@ -36,4 +36,33 @@ class BookingController extends Controller
 
         return redirect()->route('home')->with('success', 'Đặt phòng thành công!');
     }
+
+    public function edit($id)
+    {
+        $booking = Booking::findOrFail($id);
+        return view('admin.bookings.edit', compact('booking'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'orderer' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:255',
+            'email' => 'required|email|max:255',
+            'room_id' => 'required|exists:manage_rooms,id',
+        ]);
+
+        $booking = Booking::findOrFail($id);
+        $booking->update($validatedData);
+
+        return redirect()->route('admin.bookings.index')->with('success', 'Đặt phòng đã được cập nhật');
+    }
+
+    public function destroy($id)
+    {
+        $booking = Booking::findOrFail($id);
+        $booking->delete();
+
+        return redirect()->route('admin.bookings.index')->with('success', 'Đặt phòng đã được xoá');
+    }
 }
