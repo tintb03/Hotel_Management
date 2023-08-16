@@ -277,6 +277,22 @@ ul {
 }
 
 
+/* Thêm hiệu ứng khi chỉ vào ảnh */
+.card img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card img:hover {
+  transform: scale(1.05);
+}
+/* Thêm hiệu ứng khi chỉ vào ảnh trong slide */
+.showcase img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.showcase img:hover {
+  transform: scale(1.1);
+}
 
 
   /* css model */
